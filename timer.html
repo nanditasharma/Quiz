@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Starting</title>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+        <style>
+            body{
+                background-image: url(c.jpg);
+                background-size: cover;
+            }
+            
+            #lowrbdy{ 
+                width:100%;
+                height: 99.3%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+           
+
+            h1{
+                text-align:center; 
+                padding: 0px;
+                font-family: 'Rubik', sans-serif;
+                font-size: 58px;
+                padding: 20px;
+                color:#80adc3;
+            }
+
+            h2{
+                text-align: center;
+                padding: 0px;
+                font-font: 'Rubik', sans-serif;
+                font-size: 35px;
+                padding: 20px;
+                color:#9c9c9c;
+            }
+
+            #delayMsg{
+                font-family: 'Rubik', sans-serif;
+                font-size: 50px;
+                text-align: center;
+                line-height: 4.6cm;
+            }
+        </style>
+
+        <script>
+            function delayRedirect(){
+                document.getElementById('delayMsg').innerHTML='<span id="countDown">5</span>';
+                var count=5;
+                setInterval(function(){
+                    count--;
+                    document.getElementById('countDown').innerHTML=count;
+                    if(count==0){
+                        location.href = "question.html";
+
+                    }
+                },1000);
+            }
+        </script>
+
+    <script>
+        var ol = document.querySelector("ol");     
+        var datas = document.cookie.split(';');
+        for(let i = 0; i < datas.length; i++){
+         var data = datas[i].split("=");
+            var li = document.createElement("li");
+            li.innerHTML = data[0] + " : " + data[1];
+            ol.append(li);
+        }
+    </script>
+
+
+    </head>
+    <body onLoad="delayRedirect()">
+        <div id="lowrbdy">
+            <img class="bdimg" scr="pic.jpg">
+        </div>
+
+        <div class="outer">
+            <h1>BEST OF LUCK</h1>
+            <h2>Quiz Will Start In</h2>
+            
+            <div style="width:200px;
+            text-align:center;
+             height:200px; 
+             border-radius: 50%; 
+             border: 15px solid #1e1c3a52;
+              margin:auto">
+              
+            <p id="delayMsg"></p>
+            </div>
+            <h2>Seconds</h2>
+
+        </div>
+    </body>
+</html>

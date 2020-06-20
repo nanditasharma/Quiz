@@ -1,0 +1,84 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Here</title>
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <form action="index.html" method="post">
+      <h1>CSIT Quiz</h1>
+      <h2>Register Here</h2>
+      <fieldset>
+  
+        <label for="fullname">Name:<span style="color:red;"></span></label>
+        <input type="text" class="names" id="namefull" name="textFields">
+  
+        <label for="email">Email Id:<span style="color:red;"></span></label>
+        <input type="text" class="names" id="emailid" name="textFields">
+
+        <label for="phone">Phone Number:<span style="color:red;"></span></label>
+        <input type="number" id="phone" name="textFields">
+
+        <label for="level">Level:<span style="color:red;"></span></label>
+        <input type="radio" id="grad" value="grad" name="user_level">
+        <label for="grad" class="light">Graduate</label><br>
+        <input type="radio" id="under_grad" value="under_grad" name="user_level">
+        <label for="under_grad" class="light">Under Graduate</label>
+
+      </fieldset>
+  
+     
+      <button type="button" onclick="validate()">Submit</button>
+    </form>
+  
+    <script>
+      //variables
+      var fullName = document.getElementById("namefull");
+      var mobile = document.getElementById("phone");
+      var email = document.getElementById("emailid");
+      var level=document.getElementById("grad");
+     
+ 
+          
+  
+      function checkEmptyFields(){
+        var inputFields = document.getElementsByName("textFields");
+        var empty = false;
+        for(let i = 0; i < inputFields.length; i++){     
+          if(inputFields[i].value == ""){
+            empty = true;
+            inputFields[i].previousElementSibling.childNodes[1].innerHTML = "*";           
+          }
+          else{
+            inputFields[i].previousElementSibling.childNodes[1].innerHTML = "";   
+          }
+        }
+        return empty;
+      }
+  
+      function validate(){
+        if(checkEmptyFields())
+         return;
+  
+        if(mobile.value.toString().length > 10){
+          mobile.previousElementSibling.childNodes[1].innerHTML = '<span style="color:red;">* Invalid phone number. </span>';
+          return;
+        }else
+          mobile.previousElementSibling.childNodes[1].innerHTML = "";
+
+          StoreInCookies();
+          location.href = "timer.html";
+      }
+  
+      function StoreInCookies(){
+        document.cookie = "FullName=" + fullName.value + ";" + "max-age=" + (1*60*60*24*7) + ";";
+        document.cookie = "Phone=" + mobile.value + ";" + "max-age=" + (1*60*60*24*7) + ";";
+        document.cookie = "emailid=" + emailid.value + ";" + "max-age=" + (1*60*60*24*7) + ";";
+        document.cookie = "grad=" + level.value + ";" + "max-age=" + (1*60*60*24*7) + ";";
+        console.log(document.cookie);
+      }
+    </script>
+  </body>
+  </html>
